@@ -16,6 +16,9 @@ gem 'dry-validation', '1.7.0'
 gem 'faraday', '1.8.0'
 gem 'faraday_middleware', '1.1.0'
 
+gem 'ougai', '2.0.0'
+gem 'amazing_print', '1.4.0'
+
 gem 'activesupport', '~> 6.0.0', require: false
 
 group :test do
