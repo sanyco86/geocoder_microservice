@@ -1,6 +1,13 @@
+app:
+  name: geocoder
+
 microservices:
   ads_url: http://localhost:3000/api/v1
 
 rabbit_mq:
   consumer_pool: 10
   url: amqp://user_name:password@localhost:5672
+
+logger:
+  path: log/app.log
+  level: info
