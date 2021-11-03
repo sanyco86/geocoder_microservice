@@ -14,4 +14,6 @@ RUN gem update bundler && \
 
 COPY . .
 
-CMD ["bin/app"]
+EXPOSE 3002
+
+CMD ["bin/puma"]
