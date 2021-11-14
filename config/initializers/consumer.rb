@@ -12,8 +12,15 @@ queue.subscribe(manual_ack: true) do |delivery_info, properties, payload|
   Application.logger.info('geocoded coordinates', city: payload['city'], coordinates: coordinates)
 
   unless coordinates.blank?
+    Metrics.geocoding_requests_total.increment(labels: {result: 'success'})
     client = AdsService::Client.new
-    client.update_coordinates(payload['id'], coordinates)
+
+    Metrics.geocoder_request_duration_seconds.observe(
+      Benchmark.realtime { client.update_coordinates(payload['id'], coordinates) },
+      labels: { service: 'geocoding' }
+    )
+  else
+    Metrics.geocoding_requests_total.increment(labels: {result: 'failure'})
   end
 
   channel.ack(delivery_info.delivery_tag)

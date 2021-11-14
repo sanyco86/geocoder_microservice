@@ -6,9 +6,13 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 ruby '2.7.2'
 
+gem 'puma',   '5.4.0'
+gem 'rack',   '2.2.3'
 gem 'rake',   '13.0.6'
 gem 'config', '3.1.0'
 gem 'bunny',  '2.19.0'
+
+gem 'prometheus-client', '2.1.0'
 
 gem 'dry-initializer', '3.0.4'
 gem 'dry-validation', '1.7.0'
